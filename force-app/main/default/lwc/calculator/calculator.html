@@ -1,0 +1,80 @@
+<template>
+  <div class="container">
+    <lightning-card
+      title="Calculator"
+      icon-name="standard:formula"
+      class="slds-size_full"
+    >
+      <lightning-input
+        type="number"
+        name="input-1"
+        label="Enter your first value"
+        class="slds-var-p-around_medium"
+        onchange={numberChangeHandler}
+        required
+      ></lightning-input>
+      <lightning-input
+        type="number"
+        name="input-2"
+        class="slds-var-p-around_medium"
+        onchange={numberChangeHandler}
+        label="Enter your second value"
+        required
+      ></lightning-input>
+      <div class="button_group_container slds-p-bottom_medium">
+        <lightning-button-group>
+          <lightning-button
+            variant="brand-outline"
+            label="Add"
+            icon-name="utility:add"
+            onclick={addHandler}
+          ></lightning-button>
+          <lightning-button
+            variant="brand-outline"
+            label="Subtract"
+            icon-name="utility:dash"
+            onclick={subtractHandler}
+          ></lightning-button>
+          <lightning-button
+            variant="brand-outline"
+            label="Multiply"
+            icon-name="utility:close"
+            onclick={multiplyHandler}
+          ></lightning-button>
+          <lightning-button
+            variant="brand-outline"
+            label="Divide"
+            icon-name="utility:magicwand"
+            onclick={divideHandler}
+          ></lightning-button>
+        </lightning-button-group>
+      </div>
+      <lightning-input
+        type="number"
+        name="output"
+        class="slds-var-p-around_medium"
+        label="The calculation results are"
+        value={currentResult}
+        readonly
+      ></lightning-input>
+      <lightning-input
+        type="checkbox"
+        onchange={showPreviousResultToggleHandler}
+        label="Show Historic Results"
+        class="slds-var-p-around_medium"
+      ></lightning-input>
+
+      <template if:true={showPreviousResult}>
+        <div class="previousResultsOuterContainer slds-var-p-bottom_small">
+          <div class="previousResultsInnerContainer">
+            <ul>
+              <template iterator:it={resultHistory}>
+                <li key={it.value}>result#: {it.index} was {it.value}</li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </template>
+    </lightning-card>
+  </div>
+</template>

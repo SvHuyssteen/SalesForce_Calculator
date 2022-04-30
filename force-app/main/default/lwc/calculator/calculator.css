@@ -1,0 +1,30 @@
+.container {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.button_group_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.previousResultsOuterContainer {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.previousResultsInnerContainer {
+  height: 100%;
+  width: 60%;
+  border: var(--lwc-borderWidthThick, 2px) solid #add8e6;
+  overflow: auto;
+}
